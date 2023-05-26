@@ -19,7 +19,7 @@ run: $(EXEC) | $(DATADIR)
 	./$(EXEC)
 
 clean:
-	rm -rf $(OBJDIR) $(DATADIR) $(EXEC)
+	rm -rf $(OBJDIR) $(EXEC)
 
 $(EXEC): $(OBJFILES)
 	$(CXX) $(OBJDIR)/*.o -o $(EXEC) $(LINKFLAGS)

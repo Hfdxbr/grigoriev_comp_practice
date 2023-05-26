@@ -30,7 +30,7 @@ void execute(double x10, double p20, const std::vector<Params>& params) {
   std::for_each(params.begin(), params.end(), [&](const Params& params) {
     double error = 0;
     Solution sol = shooting(x10, p20, params, error);
-    auto alpha_s = to_string(params.alpha, 1);
+    auto alpha_s = to_string(params.alpha, 1, std::fixed);
     std::string plot_file = "data/points_alpha" + alpha_s + ".csv";
     print_points(sol, params, plot_file);
     ofs_stats << alpha_s << ',' << sol.back().second << ',' << J(sol, params) << ','
