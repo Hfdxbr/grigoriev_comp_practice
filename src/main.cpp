@@ -33,7 +33,8 @@ void execute(double x10, double p20, const std::vector<Params>& params) {
     auto alpha_s = to_string(params.alpha, 1, std::fixed);
     std::string plot_file = "data/points_alpha" + alpha_s + ".csv";
     print_points(sol, params, plot_file);
-    ofs_stats << alpha_s << ',' << sol.back().second << ',' << J(sol, params) << ','
+    auto& [_1, x2, p1, _2] = sol.back().second;
+    ofs_stats << alpha_s << ',' << Point{x10, x2, p1, p20} << ',' << J(sol, params) << ','
               << to_string(error, 3, std::scientific) << std::endl;
   });
 }
