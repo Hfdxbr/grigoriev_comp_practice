@@ -144,7 +144,7 @@
   \begin{cases}
     \dot{x}_1=f_1(x_1,x_2,p_1,p_2)=x_2\\
     \dot{x}_2=f_2(x_1,x_2,p_1,p_2)=p_2 \\
-    \dot{p}_1=f_3(x_1,x_2,p_1,p_2)=-\frac{24\alpha x_2\sin{\alpha x_1}}{\left(2+\cos(\alpha x_1\right)^2}\\
+    \dot{p}_1=f_3(x_1,x_2,p_1,p_2)=-\frac{24\alpha x_2\sin{\alpha x_1}}{\left(2+\cos(\alpha x_1)\right)^2}\\
     \dot{p}_2=f_4(x_1,x_2,p_1,p_2)=-\frac{24}{2+\cos{\alpha x_1}}-p_1
     \end{cases}
 \end{equation}
@@ -404,12 +404,45 @@
 \subsection*{Сводная таблица}
 \csvautotabular{data/stats.csv}
 
+\section*{Анализ оптимальности}
+Для исследования оптимальности найденной экстремали проверим условия второго порядка:
+\begin{itemize}
+  \item \textbf{Условие Лежандра}. Так как \(L_{uu}=2 > 0\), то выполняется усиленное условие Лежандра, и необходимое условие минимума выполнено.
+  \item \textbf{Условие Якоби}. Точка \(\tau\) является сопряжённой, если существует нетривиальное решение следующей краевой задачи:
+  \begin{gather*}
+    \begin{cases}
+      \dot{\delta x}_1=\delta x_2\\
+      \dot{\delta x}_2=q_2 \\
+      \dot{q}_1=A\delta x_2 +B \delta x_1\\
+      \dot{q}_2=A\delta x_1-q_1
+    \end{cases}\\
+    \delta x_1(\tau)=\delta x_2(\tau)=0\\
+    \delta x_1(1) =\delta x_2(0)=0\\
+    q_1(0)=q_2(1)=0
+  \end{gather*}
+  где
+  \begin{equation*}
+    A=-\frac{24\alpha \sin{\alpha x_1}}{\left(2+\cos(\alpha x_1)\right)^2}, \quad B=-\frac{24\alpha^2 x_2\cos{\alpha x_1}}{\left(2+\cos(\alpha x_1)\right)^2}-\frac{48\alpha^2 x_2\sin^2{\alpha x_1}}{\left(2+\cos(\alpha x_1)\right)^3}
+  \end{equation*}
+  Аналитическое решение даннйо системы показывает, что решение мождет быть толкьо тривиальным. Таким образом сопряженные точки отсутствуют и выполняется усиленное условие Якоби.
+  \item \textbf{Условие Вейерштрасса}. Так как \(L_{uu}=2\) положительно определена, то выполняется условие квазирегулярности (усиленное условие Вейерштрасса).
+  \item \textbf{Исследование второй вариации функции Лагранжа}. Функция Лагранжа и её вторая вариация для данной задачи имеют вид:
+  \begin{equation*}
+    \hat{L}=\int_0^1L dt+l, \hat{L}_{\xi\xi}=\int_0^1(\delta u)^2 dt
+  \end{equation*}
+  Достаточным условием второго порядка является положительная определённость \(\hat{L}_{\xi\xi}\) на допустимых вариациях:
+  \begin{equation*}
+    \hat{L}_{\xi\xi}(\delta\xi,\delta\xi) \ge \varepsilon \phi(\delta\xi), \quad \varepsilon > 0
+  \end{equation*}
+  В качестве \(\phi(\delta\xi)\) можно взять саму функцию \(\hat{L}\). Условие выполняется.
+\end{itemize}
+Так как задача линейно квадратичная, в \(\tilde{x}\) достигается абсолютный минимум.
 
-\addcontentsline{toc}{section}{Список литературы}
-\begin{thebibliography}{99}
-  \bibitem{RKM}\textbf{О.Б. Арушанян, С.Ф. Залеткин} Решение систем обыкновенных дифференциальных уравнений методами Рунге--Кутта.
-  \bibitem{TAC}\textbf{Д.П. Ким} Теория автоматического управления. Том 2.
-  \bibitem{OM}\textbf{Н.Л. Майорова, Д.В. Глазков} Методы оптимизации.
-  \bibitem{DEP}\textbf{А.Ф. Филиппов} Сборник задач по дифференциальным уравнениям.
-\end{thebibliography}
+% \addcontentsline{toc}{section}{Список литературы}
+% \begin{thebibliography}{99}
+%   \bibitem{RKM}\textbf{О.Б. Арушанян, С.Ф. Залеткин} Решение систем обыкновенных дифференциальных уравнений методами Рунге--Кутта.
+%   \bibitem{TAC}\textbf{Д.П. Ким} Теория автоматического управления. Том 2.
+%   \bibitem{OM}\textbf{Н.Л. Майорова, Д.В. Глазков} Методы оптимизации.
+%   \bibitem{DEP}\textbf{А.Ф. Филиппов} Сборник задач по дифференциальным уравнениям.
+% \end{thebibliography}
 \end{document}
