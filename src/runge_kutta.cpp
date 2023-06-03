@@ -81,6 +81,7 @@ Solution shooting(Params& params, double& error) {
   double delta = 0.1;
 
   while (true) {
+    error = 0;
     Solution sol = solve(params, error);
     Vector3D phi{phi1(sol, params), phi2(sol, params), phi3(sol, params)};
     // std::cout << "Params: " << params.sp.p << std::endl;
