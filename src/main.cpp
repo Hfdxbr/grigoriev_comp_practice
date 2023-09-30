@@ -154,8 +154,12 @@ void shooting(double& x10, double& p20, std::ostream* ocs) {
 }
 
 int main(int argc, char* argv[]) {
+  if (argc != 4) {
+    std::cerr << "Expected following position arguments: {T} {a} {b}" << std::endl;
+    return 1;
+  }
   set_final_time(argv[1]);
-  double a = 0.1, b = 0.15;
+  double a = std::stod(argv[2]), b = std::stod(argv[3]);
   shooting(a, b, nullptr);
   auto T_str = std::to_string(T);
   T_str.erase(T_str.find('.') + 2, T_str.size());

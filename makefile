@@ -16,10 +16,10 @@ $(DEPDIR): ; @mkdir -p $@
 $(DATADIR): ; @mkdir -p $@
 
 run: $(EXEC) | $(DATADIR)
-	./$(EXEC) 20
-	./$(EXEC) 10
-	./$(EXEC) 1
-	./$(EXEC) 0.1
+	./$(EXEC) 20 0.1 0.1
+	./$(EXEC) 10 0.1 0.1
+	./$(EXEC) 1 0.1 0.1
+	./$(EXEC) 0.1 0.1 0.1
 
 
 clean:
